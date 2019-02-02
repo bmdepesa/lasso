@@ -1,3 +1,10 @@
+```
+\|/          (__)    
+     `\------(oo)
+       ||    (__)
+       ||w--||     \|/
+   \|/
+```                     
 # lasso
 A collection of scripts to speed up common tasks when working with Rancher
 
