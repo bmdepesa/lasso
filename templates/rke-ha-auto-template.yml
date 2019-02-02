@@ -1,0 +1,13 @@
+nodes:
+- address: <addr1>
+  user: ubuntu
+  role: [controlplane,worker,etcd]
+  internal_address: <iaddr1>
+- address: <addr2>
+  user: ubuntu
+  role: [controlplane,worker,etcd]
+  internal_address: <iaddr2>
+- address: <addr3>
+  user: ubuntu
+  role: [controlplane,worker,etcd]
+  internal_address: <iaddr3>

@@ -1,0 +1,8 @@
+alias skc=set_kube_config
+alias rgl=rancher_get_ha_leader
+alias rll=rancher_get_ha_leader_logs
+alias agi=aws_get_instances
+
+alias rancher_create_ha=$LASSO_HOME/scripts/rancher/createRancherHA.sh
+alias aws_create=$LASSO_HOME/scripts/aws/awsCreate.sh
+alias run_on_hosts=$LASSO_HOME/scripts/runOnHosts.sh
