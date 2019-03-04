@@ -1,8 +1,14 @@
+#!/bin/bash
 alias skc=set_kube_config
 alias rgl=rancher_get_ha_leader
 alias rll=rancher_get_ha_leader_logs
 alias agi=aws_get_instances
 
+alias lasso_config=$LASSO_HOME/config/configure.sh
 alias rancher_create_ha=$LASSO_HOME/scripts/rancher/createRancherHA.sh
 alias aws_create=$LASSO_HOME/scripts/aws/awsCreate.sh
-alias run_on_hosts=$LASSO_HOME/scripts/runOnHosts.sh
+
+source $LASSO_HOME/scripts/misc/_common.sh
+source $LASSO_HOME/scripts/aws/_aws.sh
+source $LASSO_HOME/scripts/do/_do.sh
+source $LASSO_HOME/scripts/rancher/_rancher.sh

@@ -44,11 +44,7 @@ function addSources {
 	cat <<EOT >> $1
 
 export LASSO_HOME=$LASSO_HOME
-source $LASSO_HOME/scripts/misc/common.sh
-source $LASSO_HOME/scripts/aws/aws.sh
-source $LASSO_HOME/scripts/do/do.sh
-source $LASSO_HOME/scripts/rancher/rancher.sh
-source $LASSO_HOME/activate
+source $LASSO_HOME/_activate
 EOT
 }
 

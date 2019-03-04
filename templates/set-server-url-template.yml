@@ -1,0 +1,10 @@
+apiVersion: management.cattle.io/v3
+kind: Setting
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: server-url
+source: ""
+value: https://<hostname>
+
+

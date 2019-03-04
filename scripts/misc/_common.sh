@@ -1,21 +1,25 @@
+# Generate a random string [ numberOfCharacters (optional, default=6) ]
 function random_string {
   cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | tr '[:upper:]' '[:lower:]'| fold -w ${1:-6} | head -n 1
 }
 
+# PRIVATE
 function varNotSet {
   printf "Error: '$1' must be set! Exiting.\n"
   exit 1
 }
 
+# Set KUBECONFIG to the provided path [ pathToCfg (required) ]
 function set_kube_config {
   if [ -z $1 ]
   then
-    echo "kubeconfig: $KUBECONFIG"
+    echo "kubeconfig set to $KUBECONFIG"
   else
     export KUBECONFIG=$1
   fi
 }
 
+# PRIVATE
 function lasso_logo {
 	printf "\n"
 	cat << "EOF"
@@ -37,3 +41,9 @@ function lasso_logo {
 EOF
   printf "\n"
 }
+
+#function delete_data {
+#  # deletes files in the data folders
+#  # flag to remove any that don't belong to profiles
+#  # 
+#}

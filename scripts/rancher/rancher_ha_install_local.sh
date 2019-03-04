@@ -27,11 +27,16 @@ helm install stable/cert-manager \
   --namespace kube-system \
   --version v0.5.2
 
-helm install $rancherChartRepo \
+cd /Users/bmdepesa/Dev/Projects/rancher/bin/chart/dev/rancher
+
+helm install ./ \
   --name rancher \
   --namespace cattle-system \
   --set hostname=$hostname \
-  --set rancherImageTag=$rancherImageTag
+  --set rancherImageTag=$rancherImageTag \
+  --set busyboxImage=prom/busybox:latest
+
+cd $LASSO_HOME
 
 echo "Waiting for rancher to be available"
 sleep 60

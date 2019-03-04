@@ -91,4 +91,4 @@ rkeYmlPath=$rkeYmlPath
 rkeTemplate=$rkeTemplate
 EOT
 
-printf "Configuration completed!"
+echo "Configuration completed!"

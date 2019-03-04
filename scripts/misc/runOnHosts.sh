@@ -36,7 +36,7 @@ while getopts 'u:s:f:h:q' flag; do
   esac
 done
 
-if [ -z "$hosts_string_flag" ] &&  [ -z "$hosts_file_flag" ] ;
+if [ -z "$hosts_string_flag" ] && [ -z "$hosts_file_flag" ] ;
   then
     printf "No hosts specified.. Exiting.\n"
     exit 1

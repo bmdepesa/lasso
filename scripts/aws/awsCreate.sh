@@ -1,20 +1,8 @@
 #!/bin/bash
-name=""
-size=""
-count=""
-keyname=""
-securityGroup=""
-subnet=""
-ami=""
-volumeSize=""
-region=""
-unique=false
-
-# if config not present, give error, tell to run config script
 export $(grep -v '^#' ~/.lasso/.config | xargs)
 export $(grep -v '^#' ~/.lasso/aws.config | xargs)
 
-source $LASSO_HOME/scripts/misc/common.sh
+source $LASSO_HOME/scripts/misc/_common.sh
 
 function usage {
   cat <<EOM
@@ -29,43 +17,20 @@ if [ -z $1 ]; then usage; exit 0; fi
 
 while [ "$1" != "" ]; do
   case $1 in
-    -n | --name )  shift
-                    name=$1
-                    ;;
-    -s | --size )  shift
-                    size=$1
-                    ;;
-    -c | --count )  shift
-                    count=$1
-                    ;;
-    -k | --keyname ) shift
-                    keyname=$1
-                    ;;
-    -n | --subnet ) shift
-                    subnet=$1
-                    ;;
-    -g | --sec-group ) shift
-                    securityGroup=$1
-                    ;;
-    -a | --ami )    shift
-                    ami=$1
-                    ;;
-    -v | --volsize ) shift
-                    volumeSize=$1
-                    ;;
-    -r | --region ) shift
-                    region=$1
-                    ;;
-    -u | --unique ) shift
-                    unique=true
-                    ;;
-    -h | --help )   shift
-                    usage
-                    exit 0
-                    ;;
-    * )             usage; ;;
-    esac
-    shift
+    -n | --name )  shift; name=$1; ;;
+    -s | --size )  shift; size=$1; ;;
+    -c | --count )  shift; count=$1; ;;
+    -k | --keyname ) shift; keyname=$1; ;;
+    -n | --subnet ) shift; subnet=$1; ;;
+    -g | --sec-group ) shift; securityGroup=$1; ;;
+    -a | --ami )    shift; ami=$1; ;;
+    -v | --volsize ) shift; volumeSize=$1; ;;
+    -r | --region ) shift; region=$1; ;;
+    -u | --unique ) shift; unique=true; ;;
+    -h | --help )   shift; usage; exit 0; ;;
+    * ) usage; ;;
+  esac
+  shift
 done
 
 if [ -z $name ]; then varNotSet name; exit 0; fi
@@ -79,7 +44,7 @@ if [ -z $volumeSize ]; then varNotSet volumeSize; exit 0; fi
 if [ -z $region ]; then varNotSet region; exit 0; fi
 
 unique_suffix=$(random_string 6)
-if [ $unique == "true" ]; then name=$name-$unique_suffix; fi
+if [ "$unique" == "true" ]; then name=$name-$unique_suffix; fi
 
 instances="$(aws ec2 run-instances \
   --image-id $ami \
